@@ -1,0 +1,43 @@
+@charset "utf-8";
+@import "css/all.min.css";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    :root {
+        --color-text-base: #000;
+        --color-text-muted: #3a3a3a;
+        --color-fill: #fff;
+        --color-img-accent: #3a3a3a;
+        -color-img-accent-hover: #3a3a3a;
+        --color-button-muted: #fff;
+    }
+
+    .theme-blue {
+        --color-text-base: #0000ff;
+        --color-text-muted: #c9c9d6;
+        --color-fill: #4d4dff;
+        --color-button-accent: #0000ff;
+        -color-button-accent-hover: #8080ff;
+        --color-button-muted: #0000e6;
+    }
+
+    .theme-pink {
+        --color-text-base: #7a0099;
+        --color-text-muted: #1d1d1d;
+        --color-fill: #fff;
+        --color-button-accent: #d633ff;
+        -color-button-accent-hover: #eef2ff;
+        --color-button-muted: #ff99aa;
+    }
+
+    .theme-green {
+        --color-text-base: #008000;
+        --color-text-muted: #00cc00;
+        --color-fill: #fff;
+        --color-button-accent: #00cc00;
+        -color-button-accent-hover: #eef2ff;
+        --color-button-muted: #008000;
+    }
+}
