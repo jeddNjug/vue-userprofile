@@ -1,5 +1,6 @@
 @charset "utf-8";
 @import "css/all.min.css";
+@import "css/fonts.css";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -16,28 +17,36 @@
 
     .theme-blue {
         --color-text-base: #0000ff;
-        --color-text-muted: #c9c9d6;
+        --color-text-muted: #0000e6;
+        --color-text-inverted: #c9c9d6;
         --color-fill: #4d4dff;
         --color-button-accent: #0000ff;
         -color-button-accent-hover: #8080ff;
-        --color-button-muted: #0000e6;
     }
 
     .theme-pink {
         --color-text-base: #7a0099;
         --color-text-muted: #1d1d1d;
+        --color-button-inverted: #ff99aa;
         --color-fill: #fff;
         --color-button-accent: #d633ff;
         -color-button-accent-hover: #eef2ff;
-        --color-button-muted: #ff99aa;
     }
 
     .theme-green {
         --color-text-base: #008000;
         --color-text-muted: #00cc00;
+        --color-text-inverted: #008000;
         --color-fill: #fff;
         --color-button-accent: #00cc00;
         -color-button-accent-hover: #eef2ff;
-        --color-button-muted: #008000;
     }
+}
+
+.font-nunito {
+    font-family: 'Nunito';
+}
+
+.font-bad {
+    font-family: 'Bad Script';
 }
