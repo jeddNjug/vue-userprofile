@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue';
+import { ref, watch } from 'vue';
 import iconWhatsapp from '../components/icons/IconWhatsapp.vue'; // icon for instagram
 import iconLinkedin from '../components/icons/IconLinkedin.vue'; // icon for linkedin
 import iconGithub from "../components/icons/IconGithub.vue";    //icon for github
@@ -11,20 +11,23 @@ const skills = ref([
   { title: "Bootrap/Tailwind/Material Css", color: "bg-blue-600 text-gray-100", precentage: 87 },
   { title: "Vanilla Javascript, Jquery, Vue js", color: "bg-green-600 text-gray-100", precentage: 90 },
   { title: "Vanilla PHP, Blade PHP/Laravel ", color: "bg-purple-600 text-gray-100", precentage: 84 },
-]);
+]), userColorTheme = ref(atob(localStorage.getItem('user-theme')));
+watch(userColorTheme, function (value) {
+  localStorage.setItem('user-theme', btoa(value.toString()));
+});
 </script>
 <template>
-  <main>
-    <page-nav-bar></page-nav-bar>
+  <main :class="userColorTheme">
+    <page-nav-bar v-model="userColorTheme"></page-nav-bar>
 
-    <section class="pt-16 bg-blueGray-50">
+    <section class="pt-16 bg-skin-fill">
       <div class="w-full md:11/12 lg:w-8/12 xl:7/12 px-4 mx-auto">
         <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-xl rounded-lg mt-16">
           <div class="px-6">
             <div class="flex flex-wrap justify-center">
               <div
                 class="absolute rounded-full bg-gray-100 w-28 h-28 p-2 z-10 -top-8 shadow-lg hover:shadow-xl transition">
-                <div class="rounded-full bg-black w-full h-full overflow-auto">
+                <div class="rounded-full bg-skin-img-accent w-full h-full overflow-auto">
                   <img
                     src="https://lh3.googleusercontent.com/a/AAcHTteLylPgLw_nb2UNi5kf-z1U2NFeo3k9JbXDLqV6UbDKHdk=s288-c-no">
                 </div>
@@ -40,29 +43,29 @@ const skills = ref([
             <!-- start skills and address summary -->
             <div class="grid md:grid-cols-2">
               <div class="text-center mt-12">
-                <h3 class="text-xl font-semibold leading-normal mb-2 text-blueGray-700 mb-2 dark:text-white">
+                <h3 class="text-xl font-semibold leading-normal mb-2 text-skin-base mb-2 dark:text-white">
                   Jedidiah Mbugua Njuguna
                 </h3>
-                <div class="text-sm leading-normal mt-0 mb-2 text-blueGray-400 font-bold uppercase dark:text-white">
-                  <i class="fas fa-map-marker-alt mr-2 text-lg text-blueGray-400"></i>
+                <div class="text-sm leading-normal mt-0 mb-2 font-bold uppercase dark:text-white">
+                  <i class="fa-duotone fa-location-dot mr-2 text-lg text-skin-muted"></i>
                   Nairobi, Kenya
                 </div>
                 <div class="mb-2 text-blueGray-600 mt-10">
-                  <i class="fas fa-briefcase mr-2 text-lg text-blueGray-400"></i>
+                  <i class="fa-duotone fa-briefcase mr-2 text-lg text-skin-muted"></i>
                   Full Stack - Software developer
                 </div>
                 <div class="mb-2 text-blueGray-600">
-                  <i class="fas fa-university mr-2 text-lg text-blueGray-400"></i>
-                  Bachelor of Science in Information Technology, University of Meru
+                  <i class="fa-duotone fa-building-columns mr-2 text-lg text-skin-muted"></i>
+                  Bsc. Information Technology, University of Meru
                 </div>
                 <!-- start social media links -->
                 <ul class="flex flex-row gap-2 mt-4 justify-center">
                   <!-- whatsapp -->
-                  <a href="#" target="_blank">
+                  <a href="https://api.whatsapp.com/send?phone=0720239710" target="_blank">
                     <icon-whatsapp class="h-10 w-10 text-green-300 hover:text-green-600 transition"></icon-whatsapp>
                   </a>
                   <!-- linkedin -->
-                  <a href="#" target="_blank">
+                  <a href="www.linkedin.com/in/jedidia-mbugua-8223b61b0" target="_blank">
                     <icon-linkedin class="h-10 w-10 text-blue-400 hover:text-blue-600 transition"></icon-linkedin>
                   </a>
                   <!-- github -->
@@ -73,7 +76,7 @@ const skills = ref([
                 <!-- end social media links -->
               </div>
               <div class="mt-12 xs:border-t md:border-l border-blueGray-200 text-center md:pl-6">
-                <h2 class="text-xl font-semibold leading-normal mb-2 text-blueGray-700 mb-2">Level Of proficiency</h2>
+                <h2 class="text-xl font-semibold leading-normal mb-2 text-skin-base mb-2">Level Of proficiency</h2>
                 <template v-for="(skill, i) in skills" :key="i">
                   <skill-set-proficiency :title="skill.title" :color="skill.color" :percentage="skill.precentage"
                     :index="i"></skill-set-proficiency>
@@ -86,7 +89,7 @@ const skills = ref([
             <!-- Start brief description section -->
             <div class="flex flex-wrap justify-center my-20">
               <div class="w-full lg:w-10/12 xl:9/12 px-4">
-                <p class="mb-4 text-lg leading-relaxed text-blueGray-700 dark:text-white">
+                <p class="mb-4 text-lg leading-relaxed text-skin-accent dark:text-white">
                   A full-stack developer with 7+ years of experience in the development industry. Posesses extensive
                   skills
                   in developing software ranging from websites to web apps that are user-friendly and also responsive to
