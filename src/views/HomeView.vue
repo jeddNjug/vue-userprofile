@@ -13,7 +13,7 @@ const skills = ref([
   { title: "Vanilla PHP, Blade PHP/Laravel ", color: "bg-purple-600 text-gray-100", precentage: 84 },
 ]), userColorTheme = ref(atob(localStorage.getItem('user-theme')));
 watch(userColorTheme, function (value) {
-  localStorage.setItem('user-theme', btoa(value.toString()));
+  localStorage.setItem('user-theme', btoa(value.toString())); //for security reasons I alawys encrypt data before storing it on the local storage 
 });
 </script>
 <template>
@@ -43,10 +43,10 @@ watch(userColorTheme, function (value) {
             <!-- start skills and address summary -->
             <div class="grid md:grid-cols-2">
               <div class="text-center mt-12">
-                <h3 class="text-xl font-semibold leading-normal mb-2 text-skin-base mb-2 dark:text-white">
+                <h3 class="text-xl font-bold leading-normal mb-2 text-skin-base mb-2 dark:text-white font-nunito">
                   Jedidiah Mbugua Njuguna
                 </h3>
-                <div class="text-sm leading-normal mt-0 mb-2 font-bold uppercase dark:text-white">
+                <div class="text-sm leading-normal mt-0 mb-2 font-bold uppercase dark:text-white font-nunito">
                   <i class="fa-duotone fa-location-dot mr-2 text-lg text-skin-muted"></i>
                   Nairobi, Kenya
                 </div>
@@ -76,7 +76,8 @@ watch(userColorTheme, function (value) {
                 <!-- end social media links -->
               </div>
               <div class="mt-12 xs:border-t md:border-l border-blueGray-200 text-center md:pl-6">
-                <h2 class="text-xl font-semibold leading-normal mb-2 text-skin-base mb-2">Level Of proficiency</h2>
+                <h2 class="text-xl font-semibold leading-normal mb-2 text-skin-base mb-2 font-nunito">Skills Set <i
+                    class="fa-duotone fa-badge-check text-skin-invert"></i></h2>
                 <template v-for="(skill, i) in skills" :key="i">
                   <skill-set-proficiency :title="skill.title" :color="skill.color" :percentage="skill.precentage"
                     :index="i"></skill-set-proficiency>
